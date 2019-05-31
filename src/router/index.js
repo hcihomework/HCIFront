@@ -6,6 +6,7 @@ import TeacherMainPage from '@/components/teacher/TeacherMainPage'
 import DirectorMainPage from '@/components/director/DirectorMainPage'
 import StudentMainPage from '@/components/student/StudentMainPage'
 import LoginPage from "../components/main/LoginPage";
+import mainPage from "../components/main/mainPage";
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -30,7 +31,13 @@ export default new Router({
       path: '/student',
       name: 'StudentMainPage',
       component: StudentMainPage
+    },
+    {
+      path: '/test',
+      name: 'mainPage',
+      component: mainPage
     }
+
   ],
   mode: 'history'
 })
