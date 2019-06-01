@@ -1,7 +1,10 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
+  <div>
+  <div class="radio"><span class="yuan rdactive"><span></span></span>你丑你先</div>
+  <div class="radio"><span class="yuan"><span></span></span>你才丑你先</div>
+  <div class="radio"><span class="yuan"><span></span></span>你更丑你先</div>
   </div>
+
 </template>
 
 <script>
@@ -17,7 +20,25 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1{
-  font-weight: normal;
-}
+  .radio-beauty-container {
+    font-size: 0;
+
+   }
+  .radio-name {
+    vertical-align: middle;
+    font-size: 16px;
+  }
+  .radio-beauty {
+    width: 18px;
+    height: 18px;
+    box-sizing: border-box;
+    display: inline-block;
+    border: 1px solid ;
+    vertical-align: middle;
+    margin: 0 15px 0 3px;
+    border-radius: 50%;
+  }
+
+
+
 </style>
