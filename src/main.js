@@ -11,7 +11,7 @@ Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 Vue.prototype.bus=new Vue()
 Vue.use(ElementUI)
-router.beforeEach((to, from, next) =>{
+/*router.beforeEach((to, from, next) =>{
   if(to.path=="/"||to.path=="/register"){
     sessionStorage.setItem("identity","")
     next()
@@ -46,7 +46,7 @@ router.beforeEach((to, from, next) =>{
       next({path: "/"})
     }
   }
-})
+})*/
 new Vue({
   el: '#app',
   router,
