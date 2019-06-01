@@ -1,5 +1,6 @@
 <template>
   <div>
+    <main-page></main-page>
     <el-container style="height: 730px; border: 1px solid #eee;width: 1300px;margin: auto">
       <el-aside width="200px" style="background-color: white">
         <div style="width: 200px;height: 150px">
@@ -44,9 +45,10 @@
   import MyCoursesDetail from '@/components/student/MyCoursesDetail'
   import ModifyMessage from '@/components/student/ModifyMessage'
   import CountMessage from '@/components/student/CountMessage'
+  import mainPage from "@/components/main/mainPage.vue"
   export default {
     name: 'StudentMainPage',
-    components:{MyCourses,ChooseCourses,MyCoursesDetail,ModifyMessage,CountMessage},
+    components:{MyCourses,ChooseCourses,MyCoursesDetail,ModifyMessage,CountMessage,mainPage},
     data(){
       return{
         table_view:"MyCourses",
