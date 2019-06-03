@@ -1,18 +1,19 @@
 <template>
   <div>
-  <div class="radio"><span class="yuan rdactive"><span></span></span>你丑你先</div>
-  <div class="radio"><span class="yuan"><span></span></span>你才丑你先</div>
-  <div class="radio"><span class="yuan"><span></span></span>你更丑你先</div>
+      <navigation-page></navigation-page>
   </div>
 
 </template>
 
 <script>
+  import NavigationPage from "@/components/NavigationPage"
 export default {
   name: 'HelloWorld',
+  components:{NavigationPage},
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+
     }
   }
 }

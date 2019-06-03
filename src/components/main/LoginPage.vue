@@ -8,8 +8,7 @@
 
         <!--<div style="font-size: 20px;padding-top:30px">MYCOURSES</div>-->
         <img src="@/assets/MYCOURSES.png" style="width: 300px;height: 50px;padding-top:40px"/>
-
-        <el-divider style="width: 300px;color: #CD853F">账号登陆</el-divider>
+        <el-divider style="width: 300px; "><font color="gray">账号登陆</font></el-divider>
 
         <el-form :model="loginForm" status-icon :rules="rules" ref="loginForm" label-width="100px" style="width: 380px;margin-left:-36px;">
           <el-form-item  prop="email" style="padding-top:30px">
@@ -71,7 +70,8 @@
           ]
         },
         emailBool:true,
-        passwordBool:true
+        passwordBool:true,
+        activeName: 'second'
       }
     },
     created:function () {
