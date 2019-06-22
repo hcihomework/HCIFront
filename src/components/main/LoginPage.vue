@@ -1,17 +1,24 @@
 <template>
   <div>
     <div class="backgroundImg">
-      <img src="@/assets/登录背景.jpg"/>
+      <img src="@/assets/登录背景.jpg" />
     </div>
     <el-col :span="8" :push="4" style="top:80px">
-      <div style="position:relative;background: white;width: 400px;height: 533px;border-radius: 10px;">
-
+      <div class="main-div">
+        <el-row>
+          <el-col :span="12">
+            <div style="width: 30px;height:30px;background: linear-gradient(to bottom right, #409EFF,white ,white);"></div>
+          </el-col>
+          <el-col :span="11" :push="10">
+            <div style="width: 33px;height:30px;background: linear-gradient(to bottom left, #409EFF,white ,white);"></div>
+          </el-col>
+        </el-row>
         <!--<div style="font-size: 20px;padding-top:30px">MYCOURSES</div>-->
-        <img src="@/assets/MYCOURSES.png" style="width: 300px;height: 50px;padding-top:40px"/>
-        <el-divider style="width: 300px; "><font color="gray">账号登陆</font></el-divider>
+        <img src="@/assets/MYCOURSES.png" style="width: 300px;height: 50px;padding-top:25px"/>
+        <div style="background:linear-gradient(to left,white,#409EFF,white);height:1px;margin-top: 20px"></div>
 
         <el-form :model="loginForm" status-icon :rules="rules" ref="loginForm" label-width="100px" style="width: 380px;margin-left:-36px;">
-          <el-form-item  prop="email" style="padding-top:30px">
+          <el-form-item  prop="email" style="padding-top:50px">
             <el-input type="email"placeholder="邮箱" prefix-icon="el-icon-message" v-model="loginForm.email" autocomplete="off">
               <!--<template slot="append">@ nju.edu.cn</template>-->
             </el-input>
@@ -23,10 +30,18 @@
             <el-button type="primary" style="width: 280px"  @click="submitForm()">登陆</el-button>
           </el-form-item>
           <el-form-item style="padding-top:15px">
-            <el-divider style="padding-left: 50px"><el-link href="http://localhost:8080/register" :underline="false">注册新账号</el-link></el-divider>
+            <el-divider style="padding-left: 50px;"><el-link href="/register-page" :underline="false">注册新账号</el-link></el-divider>
           </el-form-item>
           <!--<router-link to="/register" style="font-size: 14px;margin-left: 100px;color: #CD8535">没有账号， 注册一个</router-link>-->
         </el-form>
+        <el-row style="margin-top:42px">
+          <el-col :span="12">
+            <div style="width: 30px;height:30px;background: linear-gradient(to top right, #409EFF,white ,white);"></div>
+          </el-col>
+          <el-col :span="11" :push="10">
+            <div style="width: 33px;height:30px;background: linear-gradient(to top left, #409EFF,white ,white);"></div>
+          </el-col>
+        </el-row>
       </div>
     </el-col>
   </div>
@@ -84,12 +99,22 @@
 </script>
 <style scoped>
   .backgroundImg{
-    background-size: cover;
-    width: 800px;
+    /*background-size: cover;*/
+    width: 100%;
     height: 100%;
     top: 0;
+    left: -10px;
     z-index: -1;
     position: fixed;
   }
-
+ .main-div{
+   position:relative;
+   background: white;
+   width: 400px;
+   height: 533px;
+   border-style: solid;
+   border-width: 1px;
+   border-color: dodgerblue;
+   /*background: linear-gradient(to bottom right, red , blue)*/
+ }
 </style>
