@@ -27,11 +27,7 @@
 
       </el-col>
     </el-row>
-    <el-row>
-      <div style="margin-top: -25px;width: 1370px;margin-left: 70px">
-        <el-divider></el-divider>
-      </div>
-    </el-row>
+
   </div>
 </template>
 
