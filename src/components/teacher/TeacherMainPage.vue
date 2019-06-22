@@ -1,5 +1,6 @@
 <template>
   <div>
+    <NavigationPage></NavigationPage>
   <el-container style="height: 730px; border: 1px solid #eee;width: 1300px;margin: auto">
     <el-aside width="200px" style="background-color: white">
       <div style="width: 200px;height: 150px">
@@ -51,9 +52,10 @@
   import ModifyMessage from '@/components/student/ModifyMessage'
   import News from '@/components/teacher/News'
   import CountMessage from '@/components/teacher/CountMessage'
+  import NavigationPage from '@/components/NavigationPage'
   export default {
     name: 'TeacherMainPage',
-    components: {CoursesList,CreateCourse,IssueCourses,CheckCourses,CheckCreateDetail,ModifyMessage, News,CountMessage},
+    components: {CoursesList,CreateCourse,IssueCourses,CheckCourses,CheckCreateDetail,ModifyMessage, News,CountMessage,NavigationPage},
     comments:{
       CoursesList
     },
