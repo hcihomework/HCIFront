@@ -15,20 +15,27 @@
       </el-col>
     </el-row>
 
+    <div style="min-width: 600px">
+      <H1>消息列表</H1>
+      <el-collapse v-model="activeNames" @change="handleChange" >
+        <el-collapse-item
+          v-for="item in tableData" :title='item.topic' :name='item.topic'>
+          <div style="position: relative;background-color: whitesmoke;text-align: left;border: blue 1px;bottom: 0">
+            <div>时间：{{item.time}}</div>
+            <div>发起人：{{item.user}}</div>
+            <div>内容：{{item.message}}</div>
+            <div>
+              <el-button size="mini" type="primary" @click="checkDetail(item)">详情</el-button>
+              <el-button size="mini" type="success" @click="checkReply(item)">回复</el-button>
+            </div>
+          </div>
+        </el-collapse-item>
+      </el-collapse>
+
+    </div>
+
     <el-row style="margin-top: 20px;margin-left: 13px">
       <el-col :pull="1">
-        <div style="height: 420px;width: 850px; box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)">
-          <el-table :data="tableData" :stripe="true" style="width: 100%">
-            <el-table-column prop="topic" label="话题" width="250"></el-table-column>
-            <el-table-column prop="user" label="发起人" width="250"></el-table-column>
-            <el-table-column prop="time" label="时间" width="200"></el-table-column>
-            <el-table-column label="操作">
-              <template slot-scope="scope">
-                <el-button size="mini" type="primary" @click="checkDetail(scope.row)">详情</el-button>
-                <el-button size="mini" type="success" @click="checkReply(scope.row)">回复</el-button>
-              </template>
-            </el-table-column>
-          </el-table>
           <el-dialog title="消息详情" :visible.sync="messageDialog" width="50%" top="160px">
             <p style="height: 100px;width: 100%;box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);overflow-y:scroll;overflow-x:hidden;">{{news}}</p>
             <h1 style="height: 300px;width:  100%;box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);overflow-y:scroll;overflow-x:hidden;">
@@ -55,7 +62,6 @@
             <el-input type="textarea" :rows="5" placeholder="请输入内容" v-model="replyMessage"></el-input>
             <el-button type="primary"  style="margin:20px auto 5px auto;width: 100%;" @click="reply">确认回复</el-button>
           </el-dialog>
-        </div>
       </el-col>
     </el-row>
   </div>
@@ -141,6 +147,7 @@
         })
       },
       checkDetail(row){
+        this.$emit('changeTable','FormListDetail',row)
         this.messageDialog=!this.messageDialog;
         this.news=row.message;
         this.initReply(row.id);

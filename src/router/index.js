@@ -8,6 +8,7 @@ import LoginPage from "../components/main/LoginPage";
 import HelloWorld from "../components/HelloWorld";
 import StudentPage from "../components/hci-student/StudentPage";
 import RegisterPage from "../components/main/RegisterPage";
+import Login from "../components/Login";
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -18,7 +19,7 @@ export default new Router({
     },
     {
       path: '/',
-      component: LoginPage
+      component: Login
     },
     {
       path: '/register',

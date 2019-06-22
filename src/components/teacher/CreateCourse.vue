@@ -1,5 +1,5 @@
 <template>
-  <div class="creat-div" style="overflow-y: hidden">
+  <div class="creat-div">
     <el-row>
       <el-col :span="40"><p class="name-p">课程名称：</p></el-col>
       <el-col :span="60"><el-input placeholder="课程名称" style="margin-left:20px; width: 370px" suffix-icon="el-icon-edit" v-model="course_name" class="name-input"> </el-input></el-col>
@@ -148,6 +148,6 @@
     min-height: 50px;
   }
   .creat-div{
-    margin-top: 60px;
+    margin-top: 0px;
   }
 </style>

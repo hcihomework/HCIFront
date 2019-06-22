@@ -30,7 +30,7 @@
             <el-breadcrumb-item><a href="#" style="color: white">{{title_name}}</a></el-breadcrumb-item>
           </el-breadcrumb>
         </el-header>
-        <el-main style="position: relative;left: 0;right: 0;background-color: white;overflow-y: hidden">
+        <el-main style="position: relative;left: 0;right: 0;background-color: white">
           <component class="component" :is="table_view"></component>
         </el-main>
       </el-container>

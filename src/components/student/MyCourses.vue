@@ -1,15 +1,24 @@
 <template>
-  <el-table :data="tableData" :default-sort = "{prop: 'begin_time', order: 'descending'}" height="500" border style="width: 1000px">
-    <el-table-column prop="begin_time" label="课程时间" width="220"></el-table-column>
-    <el-table-column prop="name" label="课程名称" width="220"></el-table-column>
-    <el-table-column prop="grade" label="课程对象" width="220"></el-table-column>
-    <el-table-column prop="time" label="课程教师" width="220"></el-table-column>
-    <el-table-column label="操作">
-      <template slot-scope="scope">
-        <el-button size="mini" type="primary" @click="handleEdit(scope.row)">查看</el-button>
-      </template>
-    </el-table-column>
-  </el-table>
+  <div>
+    <el-row>
+    <el-col :span="8" v-for="item in tableData" :key="item">
+      <el-card style="width: 350px">
+        <div style="padding: 20px;">
+          <span style="font-size: 30px;font-weight: bold">{{item.name}}</span><br/>
+          <span>课程时间：{{item.begin_time}}</span><br/>
+          <span>课程教师：{{item.time}}</span><br/>
+          <span>课程对象：{{item.grade}}</span>
+          <div class="bottom clearfix">
+            <el-button type="text" class="button" @click="handleEdit(item)">查看</el-button>
+          </div>
+        </div>
+      </el-card>
+    </el-col>
+  </el-row>
+
+  </div>
+
+
 </template>
 
 <script>
@@ -42,5 +51,16 @@
 </script>
 
 <style scoped>
+
+  .bottom {
+    margin-top: 13px;
+    line-height: 12px;
+  }
+
+  .button {
+    padding: 0;
+    float: right;
+  }
+
 
 </style>

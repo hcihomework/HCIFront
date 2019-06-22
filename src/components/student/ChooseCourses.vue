@@ -1,22 +1,25 @@
 <template>
 
-  <di height="500" style="width: 1000px;font-size:20px ">
-  <el-collapse v-model="activeNames" @change="handleChange"   >
-    <el-collapse-item v-for="item in tableData" :title='item.name' name="1" style="font-size:20px ">
-      <div style="position: relative;background-color: darkslategrey">
+  <div style="min-width: 1000px">
+    <H1>可选课程</H1>
+  <el-collapse v-model="activeNames" @change="handleChange" >
+    <el-collapse-item v-for="item in tableData" :title='item.name' :name='item.name'>
+      <div style="position: relative;background-color: whitesmoke;text-align: left;border: blue 1px;bottom: 0;font-size: 14px">
       <div>课程时间：{{item.begin_time}}</div>
-      <div>课程对象：{{item.grade}}</div>
-      <div>班次：{{item.limit_class}}</div>
-      <div>限选人数：{{item.limit_student}}</div>
-      <div>已选人数：{{item.choice_student}}</div>
-      <div>操作：
+        <div>课程对象：{{item.grade}}</div>
+        <div >班次：{{item.limit_class}}</div>
+        <div>限选人数：{{item.limit_student}}</div>
+        <div>已选人数：{{item.choice_student}}</div>
+        <div>操作：
         <el-button size="mini" type="primary" @click="select(item)">选择</el-button>
       </div>
       </div>
     </el-collapse-item>
-
   </el-collapse>
-  </di>
+
+      </div>
+
+
 
 
 </template>
@@ -26,6 +29,7 @@
     name: 'ChooseCourses',
     data() {
       return {
+        activeNames: ['1'],
         tableData:[]
       };
     },
@@ -73,5 +77,6 @@
 </script>
 
 <style scoped>
+
 
 </style>

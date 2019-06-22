@@ -28,11 +28,11 @@
 
       <el-container style="position: relative; left: 30px;right: 50px;background-color: white;border-radius: 5px;">
         <el-header style="border-radius: 5px;background-color: dimgrey">
-          <el-breadcrumb separator="/" style="font-size: 20px; margin: 20px;">
+          <el-breadcrumb separator="/" style="font-size: 20px; margin: 20px;" ref="bar">
             <el-breadcrumb-item><a href="#" style="color: white">{{title_name}}</a></el-breadcrumb-item>
           </el-breadcrumb>
         </el-header>
-        <el-main style="position: relative;left: 0;right: 0;background-color: white;overflow-y: hidden">
+        <el-main style="position: relative;left: 0;right: 0;background-color: white">
           <component class="component" :is="table_view" v-on:changeTable="changeTable" :course="course"></component>
         </el-main>
       </el-container>
@@ -62,13 +62,16 @@
     },
     methods:{
       changeTable(table,course){
-        this.title_name="课程详情";
+        this.title_name="我的课程";
         this.course=course;
         this.table_view=table;
       },
       handleSelect(key){
         if(key=="ChooseCourses"){
           this.title_name="学期选课";
+        }
+        if(key=="MyCourses"){
+          this.title_name="我的课程";
         }
         if(key=="MyCoursesDetail"){
           this.title_name="课程详情";
