@@ -1,8 +1,9 @@
 <template>
-  <div>
-  <el-container style="height: 730px; border: 1px solid #eee;width: 1300px;margin: auto">
-    <el-aside width="200px" style="background-color: white">
-      <div style="width: 200px;height: 150px">
+  <div class="all">
+    <Navigation></Navigation>
+  <el-container style="height: 730px;width: 1300px;margin: auto;position:relative;top: 100px">
+    <el-aside width="200px" style="background-color: white;border-radius: 10px" >
+      <div style="width: 200px;height: 150px;margin-top: 20px">
         <img src="@/assets/wang_headpic.jpg" class="person-img">
         <!--<label>{{this.name}}</label>-->
       </div>
@@ -25,18 +26,17 @@
         </el-submenu>
       </el-menu>
     </el-aside>
-    <el-container>
-      <el-header>
-        <el-breadcrumb separator-class="/" style="font-size: 20px; margin: 20px; ">
-          <el-breadcrumb-item>{{title_name}}</el-breadcrumb-item>
+
+    <el-container style="position: relative; left: 30px;right: 50px;background-color: white">
+      <el-header style="border-radius: 5px;background-color: dimgrey">
+        <el-breadcrumb separator="*" style="font-size: 20px; margin: 20px;">
+          <el-breadcrumb-item><a href="#" style="color: white">{{title_name}}</a></el-breadcrumb-item>
         </el-breadcrumb>
       </el-header>
-      <el-main>
+      <el-main style="position: relative;left: 0;right: 0;background-color: white">
         <component class="component" :is="table_view" v-on:changeTable="changeTable" :course="course"></component>
       </el-main>
     </el-container>
-
-
 
   </el-container>
   </div>
@@ -51,9 +51,11 @@
   import ModifyMessage from '@/components/student/ModifyMessage'
   import News from '@/components/teacher/News'
   import CountMessage from '@/components/teacher/CountMessage'
+  import Navigation from "@/components/NavigationPage.vue"
+
   export default {
     name: 'TeacherMainPage',
-    components: {CoursesList,CreateCourse,IssueCourses,CheckCourses,CheckCreateDetail,ModifyMessage, News,CountMessage},
+    components: {CoursesList,CreateCourse,IssueCourses,CheckCourses,CheckCreateDetail,ModifyMessage, News,CountMessage,Navigation},
     comments:{
       CoursesList
     },
@@ -108,6 +110,14 @@
   }
   .el-main{
     margin: auto;
+  }
+
+  .all{
+    background: linear-gradient(to bottom, #C0C4CC 0%,#ffffff 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
   }
 
 </style>
