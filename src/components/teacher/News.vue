@@ -4,9 +4,9 @@
     <H1>消息列表</H1>
     <el-collapse v-model="activeNames" @change="handleChange" >
       <el-collapse-item
-        v-for="item in tableData" :title='"时间："+item.time+"，类型："+item.type+"，发件人："+item.fromWhere' :name='item.message'>
-        <div style="position: relative;background-color: whitesmoke;text-align: left;border: blue 1px;bottom: 0;font-size: 14px">
-          <div>消息：{{item.message}}</div>
+        v-for="item in tableData" :title='"时间："+item.time+"，类型："+item.type+"，发件人："+item.fromWhere' :name='item'>
+        <div style="position: relative;background-color: whitesmoke;text-align: left;border: blue 1px;bottom: 0;font-size: 14px;color: dimgrey">
+          <div style="margin: 8px">消息：{{item.message}}</div>
         </div>
       </el-collapse-item>
     </el-collapse>

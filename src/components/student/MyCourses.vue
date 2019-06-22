@@ -2,7 +2,7 @@
   <div>
     <el-row>
     <el-col :span="8" v-for="item in tableData" :key="item">
-      <el-card style="width: 350px">
+      <el-card style="width: 350px;background-color: whitesmoke">
         <div style="padding: 20px;">
           <span style="font-size: 30px;font-weight: bold">{{item.name}}</span><br/>
           <span>课程时间：{{item.begin_time}}</span><br/>

@@ -3,14 +3,14 @@
   <div style="min-width: 1000px">
     <H1>可选课程</H1>
   <el-collapse v-model="activeNames" @change="handleChange" >
-    <el-collapse-item v-for="item in tableData" :title='item.name' :name='item.name'>
-      <div style="position: relative;background-color: whitesmoke;text-align: left;border: blue 1px;bottom: 0;font-size: 14px">
-      <div>课程时间：{{item.begin_time}}</div>
-        <div>课程对象：{{item.grade}}</div>
-        <div >班次：{{item.limit_class}}</div>
-        <div>限选人数：{{item.limit_student}}</div>
-        <div>已选人数：{{item.choice_student}}</div>
-        <div>操作：
+    <el-collapse-item v-for="item in tableData" :title='item.name' :name='item'>
+      <div style="position: relative;background-color: whitesmoke;text-align: left;border: blue 1px;bottom: 0;font-size: 14px;color: dimgrey">
+      <div style="margin: 8px">课程时间：{{item.begin_time}}</div>
+        <div style="margin: 8px">课程对象：{{item.grade}}</div>
+        <div  style="margin: 8px">班次：{{item.limit_class}}</div>
+        <div style="margin: 8px">限选人数：{{item.limit_student}}</div>
+        <div style="margin: 8px">已选人数：{{item.choice_student}}</div>
+        <div>
         <el-button size="mini" type="primary" @click="select(item)">选择</el-button>
       </div>
       </div>

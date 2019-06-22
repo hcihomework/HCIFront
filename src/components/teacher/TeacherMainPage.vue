@@ -28,7 +28,7 @@
     </el-aside>
 
     <el-container style="position: relative; left: 30px;right: 50px;background-color: white;border-radius: 5px;">
-      <el-header style="border-radius: 5px;background-color: dimgrey">
+      <el-header style="border-radius: 5px;background-color:#48508b">
         <el-breadcrumb separator="*" style="font-size: 20px; margin: 20px;">
           <el-breadcrumb-item><a href="#" style="color: white">{{title_name}}</a></el-breadcrumb-item>
         </el-breadcrumb>
