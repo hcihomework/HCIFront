@@ -1,29 +1,38 @@
 <template>
 
-  <el-table :data="tableData" :default-sort = "{prop: 'time', order: 'descending'}" height="500" border style="width: 1000px">
-    <el-table-column prop="begin_time" label="课程时间" width="220"></el-table-column>
-    <el-table-column prop="name" label="课程名" width="220"></el-table-column>
-    <el-table-column prop="grade" label="课程对象" width="220"></el-table-column>
-    <el-table-column prop="limit_class" label="班次" width="70"></el-table-column>
-    <el-table-column prop="limit_student" label="限选人数" width="80"></el-table-column>
-    <el-table-column prop="choice_student" label="已选人数" width="80"></el-table-column>
-    <el-table-column label="操作">
-      <template slot-scope="scope">
-        <el-button size="mini" type="primary" @click="select(scope.row)">选择</el-button>
-      </template>
-    </el-table-column>
-  </el-table>
+  <di height="500" style="width: 1000px;font-size:20px ">
+  <el-collapse v-model="activeNames" @change="handleChange"   >
+    <el-collapse-item v-for="item in tableData" :title='item.name' name="1" style="font-size:20px ">
+      <div style="position: relative;background-color: darkslategrey">
+      <div>课程时间：{{item.begin_time}}</div>
+      <div>课程对象：{{item.grade}}</div>
+      <div>班次：{{item.limit_class}}</div>
+      <div>限选人数：{{item.limit_student}}</div>
+      <div>已选人数：{{item.choice_student}}</div>
+      <div>操作：
+        <el-button size="mini" type="primary" @click="select(item)">选择</el-button>
+      </div>
+      </div>
+    </el-collapse-item>
+
+  </el-collapse>
+  </di>
+
+
 </template>
 
 <script>
   export default {
     name: 'ChooseCourses',
-    data(){
-      return{
+    data() {
+      return {
         tableData:[]
-      }
+      };
     },
     methods:{
+      handleChange(val) {
+        console.log(val);
+      },
       initTable(){
         let url="/api/student/issue.course.list";
         this.$axios.get(url)

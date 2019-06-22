@@ -24,13 +24,13 @@
       </el-aside>
 
 
-      <el-container style="position: relative; left: 30px;right: 50px;background-color: white">
+      <el-container style="position: relative; left: 30px;right: 50px;background-color: white;border-radius: 5px;">
         <el-header style="border-radius: 5px;background-color: dimgrey">
           <el-breadcrumb separator="/" style="font-size: 20px; margin: 20px;">
             <el-breadcrumb-item><a href="#" style="color: white">{{title_name}}</a></el-breadcrumb-item>
           </el-breadcrumb>
         </el-header>
-        <el-main>
+        <el-main style="position: relative;left: 0;right: 0;background-color: white;overflow-y: hidden">
           <component class="component" :is="table_view"></component>
         </el-main>
       </el-container>
