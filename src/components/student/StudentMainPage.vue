@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <main-page></main-page>
-    <el-container style="height: 730px; border: 1px solid #eee;width: 1300px;margin: auto">
-      <el-aside width="200px" style="background-color: white">
-        <div style="width: 200px;height: 150px">
+  <div class="all">
+    <Navigation></Navigation>
+    <el-container style="height: 730px;width: 1300px;margin: auto;position:relative;top: 100px">
+      <el-aside width="200px" style="background-color: white;border-radius: 10px" >
+        <div style="width: 200px;height: 150px;margin-top: 20px">
           <img src="@/assets/wang_headpic.jpg" class="person-img">
           <!--<label>{{this.name}}</label>-->
         </div>
-        <el-menu :default-openeds="['1','2']" @select="handleSelect">
+        <el-menu :default-openeds="['1','2']" @select="handleSelect" >
           <el-submenu index="1">
             <template slot="title"><i class="el-icon-menu"></i>课程管理</template>
             <el-menu-item-group>
@@ -24,10 +24,12 @@
           </el-submenu>
         </el-menu>
       </el-aside>
-      <el-container>
-        <el-header>
-          <el-breadcrumb separator-class="/" style="font-size: 20px; margin: 20px; ">
-            <el-breadcrumb-item>{{title_name}}</el-breadcrumb-item>
+
+
+      <el-container style="position: relative; left: 30px;right: 50px;background-color: white">
+        <el-header style="border-radius: 5px;background-color: dimgrey">
+          <el-breadcrumb separator="/" style="font-size: 20px; margin: 20px;">
+            <el-breadcrumb-item><a href="#" style="color: white">{{title_name}}</a></el-breadcrumb-item>
           </el-breadcrumb>
         </el-header>
         <el-main>
@@ -46,9 +48,11 @@
   import ModifyMessage from '@/components/student/ModifyMessage'
   import CountMessage from '@/components/student/CountMessage'
   import mainPage from "@/components/main/mainPage.vue"
+  import Navigation from "@/components/NavigationPage.vue"
+
   export default {
     name: 'StudentMainPage',
-    components:{MyCourses,ChooseCourses,MyCoursesDetail,ModifyMessage,CountMessage,mainPage},
+    components:{MyCourses,ChooseCourses,MyCoursesDetail,ModifyMessage,CountMessage,Navigation},
     data(){
       return{
         table_view:"MyCourses",
@@ -100,5 +104,13 @@
   }
   .el-main{
     margin: auto;
+  }
+
+  .all{
+    background: linear-gradient(to bottom, #C0C4CC 0%,#ffffff 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
   }
 </style>

@@ -1,8 +1,9 @@
 <template>
-  <div>
-    <el-container style="height: 730px; border: 1px solid #eee;width: 1300px;margin: auto">
-      <el-aside width="200px" style="background-color: white">
-        <div style="width: 200px;height: 150px">
+  <div class="all">
+    <Navigation></Navigation>
+    <el-container style="height: 730px;width: 1300px;margin: auto;position:relative;top: 100px">
+      <el-aside width="200px" style="background-color: white;border-radius: 10px" >
+        <div style="width: 200px;height: 150px;margin-top: 20px">
           <img src="@/assets/wang_headpic.jpg" class="person-img">
         </div>
         <el-menu :default-openeds="['1']" @select="handleSelect">
@@ -22,10 +23,11 @@
         </el-menu>
       </el-aside>
 
-      <el-container>
-        <el-header>
-          <el-breadcrumb separator-class="/" style="font-size: 20px; margin: 20px; ">
-            <el-breadcrumb-item>{{title_name}}</el-breadcrumb-item>
+
+      <el-container style="position: relative; left: 30px;right: 50px;background-color: white">
+        <el-header style="border-radius: 5px;background-color: dimgrey">
+          <el-breadcrumb separator="/" style="font-size: 20px; margin: 20px;">
+            <el-breadcrumb-item><a href="#" style="color: white">{{title_name}}</a></el-breadcrumb-item>
           </el-breadcrumb>
         </el-header>
         <el-main>
@@ -41,9 +43,10 @@
   import ApprovalTable from '@/components/director/ApprovalTable'
   import IssueApproval from '@/components/director/IssueApproval'
   import CountMessage from '@/components/director/CountMessage'
+  import Navigation from "@/components/NavigationPage.vue"
   export default {
     name: 'DirectorMainPage',
-    components: {ApprovalTable,IssueApproval,CountMessage},
+    components: {ApprovalTable,IssueApproval,CountMessage,Navigation},
     data(){
       return{
         title_name:"建课审批",
@@ -80,5 +83,13 @@
 
   .el-aside {
     color: #333;
+  }
+
+  .all{
+    background: linear-gradient(to bottom, #C0C4CC 0%,#ffffff 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
   }
 </style>

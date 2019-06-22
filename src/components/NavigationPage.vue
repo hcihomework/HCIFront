@@ -1,19 +1,19 @@
 <template>
-  <div style="position: fixed;top: 5px;left: 100px;width: 1480px">
-    <el-row>
+  <div style="position: fixed;top: 0;right: 10px;left: 10px;z-index: 5">
+    <el-row style="background-color:mediumpurple;border-radius:5px">
       <el-col :span="6">
         <!--<button class="main-btn" @click="handleSelect()"></button>-->
-        <a href="/"><img src="../assets/MYCOURSES.png" style="width: 250px"></a>
+        <a href="#"><img src="../assets/导航栏字体.png" style="width: 250px"></a>
       </el-col>
       <el-col :span="14" :push="9">
         <el-dropdown :hide-on-click="false">
-        <span class="el-dropdown-link">
+        <span class="el-dropdown-link" style="cursor: pointer;">
           <el-col :span="10">
             <img src="@/assets/wang_headpic.jpg" style="width: 35px;border-radius:35px;margin-top: 5px">
           </el-col>
            <el-col :span="14">
              <div style="margin-top: 12px;width: 60px">
-                  <span>个人中心</span>
+                  <span style="color: white">个人中心</span>
              </div>
            </el-col>
         </span>
@@ -27,11 +27,7 @@
 
       </el-col>
     </el-row>
-    <el-row>
-      <div style="margin-top: -20px;width: 1370px;margin-left: 70px">
-        <el-divider></el-divider>
-      </div>
-    </el-row>
+
   </div>
 </template>
 
@@ -62,4 +58,7 @@
     outline: none;
   }
 
+  .backgroundColor{
+    background:#F00;
+  }
 </style>

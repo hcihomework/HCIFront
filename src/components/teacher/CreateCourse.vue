@@ -2,12 +2,12 @@
   <div class="creat-div">
     <el-row>
       <el-col :span="40"><p class="name-p">课程名称：</p></el-col>
-      <el-col :span="60"><el-input placeholder="课程名称" style="margin-left:20px; width: 300px" suffix-icon="el-icon-edit" v-model="course_name" class="name-input"> </el-input></el-col>
+      <el-col :span="60"><el-input placeholder="课程名称" style="margin-left:20px; width: 370px" suffix-icon="el-icon-edit" v-model="course_name" class="name-input"> </el-input></el-col>
     </el-row>
     <el-row>
       <el-col :span="40"><p>课程对象：</p></el-col>
       <el-col :span="60">
-        <el-select v-model="grade_value" placeholder="请选择对象" style="margin-left:20px; width: 300px">
+        <el-select v-model="grade_value" placeholder="请选择对象" style="margin-left:20px; width: 370px">
           <el-option
             v-for="item in options"
             :key="item.value"
@@ -136,11 +136,11 @@
   }
   .note{
     margin-left: 20px;
-    width: 300px;
+    width: 370px;
     height: 60px;
   }
   .create-btn{
-    width: 410px;
+    width: 470px;
   }
   .file-upload{
     margin: 12px auto 0 20px;
