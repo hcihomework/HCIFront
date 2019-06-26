@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div style="width: 1060px">
     <el-row>
-    <el-col :span="8" v-for="item in tableData" :key="item">
-      <el-card style="width: 350px;background-color: whitesmoke">
+    <el-col v-for="item in tableData" :key="item" :span="8">
+      <el-card style="width: 320px;background-color: whitesmoke;margin-top: 20px">
         <div style="padding: 20px;">
           <span style="font-size: 30px;font-weight: bold">{{item.name}}</span><br/>
           <span>课程时间：{{item.begin_time}}</span><br/>

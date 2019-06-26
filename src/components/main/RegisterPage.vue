@@ -24,52 +24,8 @@
      </el-col>
    </el-row>
     <div v-show="activeStep==0">
-      <el-row style="margin-top: 30px">
-      <el-col span="10" :pull="1">
-        <p style="font: 16px/1.5 'Microsoft yahei', arial, Simsun, sans-serif;margin-left: -100px;margin-top: 8px">身份</p>
-      </el-col>
-      <el-col span="10" :pull="9">
-        <el-select v-model="identity" clearable placeholder="请选择" style="width: 270px">
-          <el-option
-            v-for="item in options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
-          </el-option>
-        </el-select>
-      </el-col>
-    </el-row >
-      <el-row style="margin-top: 30px">
-        <el-col span="10" :pull="1">
-          <p style="font: 16px/1.5 'Microsoft yahei', arial, Simsun, sans-serif;margin-left: -100px;margin-top: 8px">邮箱</p>
-        </el-col>
-        <el-col span="10" :pull="9">
-          <el-input prefix-icon="el-icon-message" type="email" v-model="registerForm.email" style="width: 270px"></el-input>
-        </el-col>
-      </el-row>
-      <el-row style="margin-top: 30px">
-        <el-col span="4" :push="2">
-          <p style="font: 16px/1.5 'Microsoft yahei', arial, Simsun, sans-serif;margin-left: -110px;margin-top: 8px">验证码</p>
-        </el-col>
-        <el-col  span="10" :pull="4">
-          <el-input  prefix-icon="el-icon-key" type="text" v-model="registerForm.captcha" autocomplete="off" style="width:130px;margin-left: -20px "></el-input>
-        </el-col >
-        <el-col  span="10" :pull="11" style="margin-left: -55px">
-          <el-button :disabled="true" @click="countDown" class="captcha-button" style="width: 140px">{{content}}</el-button>
-        </el-col>
-      </el-row>
-      <el-row style="margin-top: 30px">
-        <el-col span="6" :push="3">
-          <el-button type="primary" style="width: 270px" @click="goPerson">下一步，填写个人信息</el-button>
-        </el-col>
-      </el-row>
-    </div>
-    <div v-show="activeStep==1">
-      <el-row style="margin-top: 30px">
-        <el-col span="10" :pull="1">
-          <p style="font: 16px/1.5 'Microsoft yahei', arial, Simsun, sans-serif;margin-left: -100px;margin-top: 8px">姓名</p>
-        </el-col>
-        <el-col span="10" :pull="9">
+      <el-form :label-position="labelPosition" label-width="80px" :rules="rulesOne" :model="registerForm" style="width: 350px;margin-left: 140px;margin-top: 30px">
+        <el-form-item label="身份" >
           <el-select v-model="identity" clearable placeholder="请选择" style="width: 270px">
             <el-option
               v-for="item in options"
@@ -78,6 +34,44 @@
               :value="item.value">
             </el-option>
           </el-select>
+        </el-form-item>
+        <el-form-item label="邮箱" prop="email">
+          <el-input prefix-icon="el-icon-message" type="email" v-model="registerForm.email" autocomplete="off" style="width: 270px"></el-input>
+        </el-form-item>
+        <el-form-item label="验证码" prop="captcha">
+              <el-input  prefix-icon="el-icon-key" type="text" v-model="registerForm.captcha" autocomplete="off" style="width:135px"></el-input>
+              <el-button :disabled="emailBool" @click="countDown" class="captcha-button" style="width: 130px">{{content}}</el-button>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary":disabled="emailBool||captchaBool||nextStep" style="width: 270px" @click="goPerson()">下一步，填写个人信息</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
+    <div v-show="activeStep==1">
+      <el-form :model="registerForm" status-icon :rules="rulesTwo" ref="registerForm" label-width="100px" style="width: 420px;margin-left: 140px;margin-top: 30px">
+        <el-form-item label="姓名" prop="username">
+          <el-input prefix-icon="el-icon-document" type="text" v-model="registerForm.username" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="学/工号" prop="id">
+          <el-input prefix-icon="el-icon-edit-outline" type="text" v-model="registerForm.id" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="密码" prop="password">
+          <el-input prefix-icon="el-icon-view" type="password" v-model="registerForm.password" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="确认密码" prop="checkPassword">
+          <el-input prefix-icon="el-icon-view" type="password" v-model="registerForm.checkPassword" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" :disabled="passwordBool||checkPasswordBool"  @click="submitForm()" class="register-button">注册</el-button>
+        </el-form-item>
+      </el-form>
+      <!--
+      <el-row style="margin-top: 30px">
+        <el-col span="10" :pull="1">
+          <p style="font: 16px/1.5 'Microsoft yahei', arial, Simsun, sans-serif;margin-left: -100px;margin-top: 8px">姓名</p>
+        </el-col>
+        <el-col span="10" :pull="9">
+          <el-input prefix-icon="el-icon-user" type="email" v-model="registerForm.email" style="width: 270px"></el-input>
         </el-col>
       </el-row >
       <el-row style="margin-top: 30px">
@@ -109,8 +103,9 @@
           <el-button type="primary" style="width: 270px" @click="register">注册</el-button>
         </el-col>
       </el-row>
+      -->
     </div>
-    <div v-show="activeStep==3" style="margin-top: 100px;margin-left:-500px">
+    <div v-show="activeStep==2" style="margin-top: 100px;margin-left:-500px">
         <span style="font-size: 25px;color: #67C23A;">恭喜你，注册成功!<el-link type="primary" href="/" style="font-size: 25px;margin-top: -8px;margin-left: 10px">点击返回登陆</el-link></span>
     </div>
     </div>
@@ -121,6 +116,49 @@
   export default {
     name: 'Register',
     data (){
+      let checkEmail= (rule, value, callback) => {
+        if (!value) {
+          return callback(new Error('邮箱不能为空'));
+        } else {
+          let njuEmail = value.split('@') ;
+          if(njuEmail[1] != 'nju.edu.cn' && njuEmail[1]  != 'smail.nju.edu.cn'){
+            return callback(new Error('请输入nju邮箱'));
+          } else {
+            this.emailBool=false;
+            callback();
+          }
+        }
+      };
+      let checkCaptcha = (rule, value, callback) =>{
+        if(!value){
+          return callback(new Error('验证码不能为空'));
+        }else if(value.length!=6){
+          return callback(new Error('验证码为6位'));
+        }else {}
+        this.captchaBool=false;
+        callback();
+
+      };
+      let passwordRule  = (rule, value, callback) =>{
+        if(!value){
+          return callback(new Error('密码不能为空'));
+        }else if(value.length<6||value.length>15){
+          return callback(new Error('密码长度为6-15位'));
+        }else{
+          this.passwordBool=false;
+          callback();
+        }
+      };
+      let checkPasswordRule  = (rule, value, callback) =>{
+        if(!value){
+          return callback(new Error('密码不能为空'));
+        }else if(value!=this.registerForm.password){
+          return callback(new Error('密码不一致'));
+        }else{
+          this.checkPasswordBool=false;
+          callback();
+        }
+      };
       return {
         registerForm:{
           email:'',
@@ -130,12 +168,28 @@
           checkPassword:'',
           captcha:''
         },
+        rulesOne: {
+          email: [
+            {validator: checkEmail, trigger: 'blur'}
+          ],
+          captcha: [
+            {validator: checkCaptcha,trigger: 'blur'}
+          ]
+        },
+        rulesTwo: {
+          password: [
+            {validator: passwordRule, trigger: 'blur'}
+          ],
+          checkPassword: [
+            {validator: checkPasswordRule, trigger: 'blur'}
+          ],
+        },
         activeStep:0,
+        nextStep:false,//后续测试修改
         emailBool:true,
-        idBool:true,
+        captchaBool:true,
         passwordBool:true,
         checkPasswordBool:true,
-        captchaBool:true,
         timeLate:false,
         content:'发送验证码',
         totalTime: 60,
@@ -150,42 +204,6 @@
       }
     },
     methods: {
-      submitForm(){
-        //注册
-        //alert(this.registerForm.captcha)
-        let url='/api/register';
-        this.$axios.post(url,{
-          'email': this.registerForm.email,
-          'name': this.registerForm.username,
-          'identity': this.identity,
-          'id': this.registerForm.id,
-          'password': this.registerForm.password,
-          'captcha' :this.registerForm.captcha
-        },{
-          headers: {
-            'Content-Type': 'application/json;charset=UTF-8'
-          }
-        }).then(res=>{
-          if(res.data=='success'){
-            this.$message({
-              message: '恭喜你，MyCourses注册成功',
-              type: 'success'
-            });
-            this.$router.push({
-                path:'/',
-                query:{
-                  'user':this.registerForm.email
-                }
-              }
-            )
-          }else {
-            this.openMessage(res.data)
-          }
-        }).catch(error=>{
-          console.log(error)
-        })
-
-      },
       countDown(){
         //验证码发送
         let url='/api/sendcode'
@@ -197,8 +215,12 @@
             'Content-Type': 'application/json;charset=UTF-8'
           }
         }).then(res=>{
-          if(res.data!=true){
-            open('请检查邮箱是否正确');
+          if(res.data=='exist'){
+            this.openMessage('该邮箱已被注册');
+          }else if(res.data=='fail'){
+            this.openMessage('请检查邮箱是否正确');
+          }else {
+            this.nextStep=false
           }
         }).catch(error=>{
           console.log(error);
@@ -216,12 +238,53 @@
             this.content = this.totalTime + 's'
         },1000)
       },
-      goPerson(){
-        this.activeStep++;
+      isCaptcha(){
+        let url='/api/checkcaptcha'
+        this.$axios.get(url,{
+          params:{
+            "captcha":this.registerForm.captcha,
+          },
+          headers: {
+            'Content-Type': 'application/json;charset=UTF-8'
+          }
+        }).then(res=>{
+          if(res.data!='success'){
+            open(res.data);
+          }else{
+            this.activeStep++;
+          }
+        }).catch(error=>{
+          console.log(error);
+        })
       },
-      register(){
-        this.activeStep++;
-        this.activeStep++;
+      goPerson(){
+        this.isCaptcha();
+      },
+      submitForm(){
+        //注册
+        //alert(this.registerForm.captcha)
+        let url='/api/register';
+        this.$axios.post(url,{
+          'email': this.registerForm.email,
+          'name': this.registerForm.username,
+          'identity': this.identity,
+          'id': this.registerForm.id,
+          'password': this.registerForm.password,
+          'captcha' :this.registerForm.captcha
+        },{
+          headers: {
+            'Content-Type': 'application/json;charset=UTF-8'
+          }
+        }).then(res=>{
+          if(res.data=='success'){
+            this.activeStep++;
+          }else {
+            this.openMessage(res.data)
+          }
+        }).catch(error=>{
+          console.log(error)
+        })
+
       },
 
       openMessage(message) {
