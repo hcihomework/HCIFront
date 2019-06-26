@@ -29,6 +29,7 @@
         this.$axios.get(url)
           .then(res=>{
             this.tableData=res.data
+            this.tableData.reverse()
           }).catch(error=>{
           console.log(error)
         })
