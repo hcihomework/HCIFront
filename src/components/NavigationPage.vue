@@ -18,8 +18,7 @@
            </el-col>
         </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item icon="el-icon-plus">个人中心</el-dropdown-item>
-            <el-dropdown-item icon="el-icon-circle-plus">登出</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-circle-plus" @click.native="logout">登出</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </el-col>
@@ -42,7 +41,17 @@
       methods: {
         handleSelect() {
           alert("i get")
+        },
+        logout(){
+          let url="/api/logout";
+          this.$axios.get(url)
+            .then(res=>{
+              if (res.data==true){
+                this.$router.push('/')
+              }
+          })
         }
+
       }
     }
 </script>
